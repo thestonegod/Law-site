@@ -6,10 +6,16 @@
 
 body{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: whitesmoke;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url(/bar.jpeg);
+    background-size: cover;
+    background-position: contain;
+    background-attachment: scroll;
+    filter: brightness(1.2) saturate(1.2) contrast(1.5);
 }
 
 .header{
@@ -17,11 +23,20 @@ body{
     justify-content: space-between;
     width: 100%;
     padding: 30px 50px;
-    text-decoration: none;
 }
 
 .header a {
     text-decoration: none;
+    color: whitesmoke;
+    gap: 10px;
+}
+.header a:link{}
+.header a:visited{
+    color: turquoise;
+}
+.header a:hover{
+    color: blueblack;
+    font-weight: bold;
 }
 
 .logo{
@@ -30,5 +45,5 @@ body{
 }
 
 .header-nav{
-    gap: 10px;
+    gap: 15px;
 }
