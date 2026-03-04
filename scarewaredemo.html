@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cybersecurity Demo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Consolas, monospace;
+      background: black;
+      color: lime;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .warning {
+      color: red;
+      font-size: 40px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px red;
+    }
+
+    .scan-bar-container {
+      width: 80%;
+      height: 20px;
+      border: 2px solid lime;
+      margin-top: 20px;
+    }
+
+    .scan-bar {
+      height: 100%;
+      width: 0%;
+      background: lime;
+      transition: width 0.2s;
+    }
+
+    .log {
+      margin-top: 30px;
+      width: 80%;
+      height: 200px;
+      overflow: hidden;
+      border: 1px solid lime;
+      padding: 10px;
+      font-size: 14px;
+      background: #001100;
+    }
+
+    .countdown {
+      font-size: 50px;
+      color: yellow;
+      margin-top: 20px;
+    }
+
+    .reveal {
+      display: none;
+      text-align: center;
+      padding: 40px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="overlay" id="demoScreen">
+
+  <div class="warning">⚠️ SYSTEM BREACH DETECTED ⚠️</div>
+
+  <div>Your files have been compromised. Scanning system files...</div>
+
+  <div class="scan-bar-container">
+    <div class="scan-bar" id="scanBar"></div>
+  </div>
+
+  <div class="log" id="logBox"></div>
+
+  <div class="countdown" id="timer">15</div>
+
+  <div style="margin-top:20px; font-size:14px; color:gray;">
+    Immediate action required. Do not turn off your computer!
+  </div>
+
+</div>
+
+<div class="reveal" id="educationScreen">
+  <h1>This Was a Simulation</h1>
+  <p>No real threat exists.</p>
+  <p>This demonstrates how scareware uses:</p>
+  <ul style="text-align:left; display:inline-block;">
+    <li>Urgency (Countdown timer)</li>
+    <li>Fear language</li>
+    <li>Visual intimidation</li>
+    <li>Technical-looking logs</li>
+  </ul>
+  <button onclick="location.reload()">Replay Demo</button>
+</div>
+
+<script>
+
+let scanBar = document.getElementById("scanBar");
+let logBox = document.getElementById("logBox");
+let timer = document.getElementById("timer");
+let demoScreen = document.getElementById("demoScreen");
+let educationScreen = document.getElementById("educationScreen");
+
+let progress = 0;
+let timeLeft = 15;
+
+let fakeLogs = [
+  "Initializing security protocol...",
+  "Accessing system registry...",
+  "Suspicious file detected...",
+  "Decrypting malicious payload...",
+  "Privilege escalation attempt blocked...",
+  "Unauthorized access detected...",
+  "Extracting threat signature...",
+  "Kernel integrity compromised...",
+  "Data exfiltration attempt logged..."
+];
+
+function addLog() {
+  let entry = document.createElement("div");
+  entry.innerText = fakeLogs[Math.floor(Math.random() * fakeLogs.length)];
+  logBox.appendChild(entry);
+  logBox.scrollTop = logBox.scrollHeight;
+}
+
+let scanInterval = setInterval(function() {
+  progress += 2;
+  scanBar.style.width = progress + "%";
+  addLog();
+
+  if (progress >= 100) {
+    clearInterval(scanInterval);
+  }
+}, 200);
+
+let countdown = setInterval(function() {
+  timeLeft--;
+  timer.innerText = timeLeft;
+
+  if (timeLeft <= 0) {
+    clearInterval(countdown);
+    demoScreen.style.display = "none";
+    educationScreen.style.display = "block";
+    document.body.style.background = "white";
+    document.body.style.color = "black";
+  }
+}, 1000);
+
+</script>
+
+</body>
+</html>
