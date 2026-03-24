@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -88,4 +89,18 @@ main{
     display: flex;
     gap: 20px;
     margin-top: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: #0066cc;
+    padding: 20px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.practical{
+    background-color: none;
+    border: none;
 }
