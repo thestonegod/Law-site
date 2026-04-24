@@ -8,15 +8,21 @@
     </head>
     <body>
         <header class="header">
-            <div><a href="#" class="logo">Active lawyer</a></div>
-            <nav class="header-nav">
-                <a href="#">Home</a>
-                <a href="#">Practice Areas</a>
-                <a href="#">About</a>
-                <a href="#">FAQs</a>
-                <a href="#">Contact</a>
-                <a href="#">Admin</a>
-            </nav> 
+            <div class="hamburger" >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div><a href="index.html" class="logo">Active lawyer</a></div>
+                <nav class="header-nav">
+                    <a href="index.html">Home</a>
+                    <a href="practice-areas.html">Practice Areas</a>
+                    <a href="about.html">About</a>
+                    <a href="faqs.html" class="active">FAQs</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="admin.html">Admin</a>
+                </nav>
         </header>
 
         <main>
@@ -36,6 +42,26 @@
                 </div>
             </section>
         </main>
+
+
+        <script>
+            // Hamburger and nav selectors
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.header-nav');
+
+            // Toggle nav visibility on click
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            // close menu when a link is clicked
+            document.querySelectorAll('.header-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+      </script>
+
         
     </body>
 </html>
